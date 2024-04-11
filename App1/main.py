@@ -10,6 +10,10 @@ import models
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {"detail": "Hellow World!"}
+
 
 @app.post("/product", status_code=status.HTTP_201_CREATED, response_model=schemas.ProductOut)
 def product(request: schemas.ProductIn, db:Session=Depends(get_db)):
